@@ -1,5 +1,5 @@
-import { request } from 'graphql-request';
-import gql from 'graphql-tag';
+import { request } from "graphql-request";
+import gql from "graphql-tag";
 
 const MASTER_URL =
   "https://api-ap-south-1.hygraph.com/v2/" +
@@ -22,8 +22,13 @@ const getCategory = async () => {
     }
   `;
 
-  const result = await request(MASTER_URL, query);
-  return result;
+  try {
+    const result = await request(MASTER_URL, query);
+    return result;
+  } catch (error) {
+    console.error("Error fetching categories:", error);
+    throw error;
+  }
 };
 
 const getAllBusinessList = async () => {
@@ -45,8 +50,14 @@ const getAllBusinessList = async () => {
       }
     }
   `;
-  const result = await request(MASTER_URL, query);
-  return result;
+
+  try {
+    const result = await request(MASTER_URL, query);
+    return result;
+  } catch (error) {
+    console.error("Error fetching business list:", error);
+    throw error;
+  }
 };
 
 const getBusinessByCategory = async (category) => {
@@ -68,8 +79,14 @@ const getBusinessByCategory = async (category) => {
       }
     }
   `;
-  const result = await request(MASTER_URL, query);
-  return result;
+
+  try {
+    const result = await request(MASTER_URL, query);
+    return result;
+  } catch (error) {
+    console.error("Error fetching business by category:", error);
+    throw error;
+  }
 };
 
 const getBusinessById = async (id) => {
@@ -91,13 +108,56 @@ const getBusinessById = async (id) => {
       }
     }
   `;
-  const result = await request(MASTER_URL, query);
-  return result;
-}
+
+  try {
+    const result = await request(MASTER_URL, query);
+    return result;
+  } catch (error) {
+    console.error("Error fetching business by ID:", error);
+    throw error;
+  }
+};
+
+const createNewBooking = async (
+  businessId,
+  date,
+  time,
+  userEmail,
+  userName
+) => {
+  const mutationQuery = gql`
+    mutation CreateBooking {
+      createBooking(
+        data: {
+          bookingStatus: Booked,
+          businessList: { connect: { id: "${businessId}" } },
+          date: "${date}",
+          time: "${time}",
+          userEmail: "${userEmail}",
+          userName: "${userName}"
+        }
+      ) {
+        id
+      }
+          publishManyBookings(to: PUBLISHED) {
+    count
+  }
+    }
+  `;
+
+  try {
+    const result = await request(MASTER_URL, mutationQuery);
+    return result;
+  } catch (error) {
+    console.error("Error creating new booking:", error);
+    throw error;
+  }
+};
 
 export default {
   getCategory,
   getAllBusinessList,
   getBusinessByCategory,
   getBusinessById,
+  createNewBooking,
 };
