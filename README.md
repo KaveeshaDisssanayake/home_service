@@ -1,4 +1,4 @@
-![image](https://github.com/KaveeshaDisssanayake/home_service/assets/90174106/720c8104-695e-434a-849b-89d94b400931)HomeEase: Your One-Stop Solution for Home Services 🏠✨
+HomeEase: Your One-Stop Solution for Home Services 🏠✨
 
 
 
