@@ -15,6 +15,7 @@ import { Button } from "@/components/ui/button";
 import GlobalApi from "@/app/_services/GlobalApi";
 import { useSession } from "next-auth/react";
 import { toast } from "sonner";
+import moment from "moment";
 
 function BookingSection({ children, business }) {
   const [date, setDate] = useState(new Date());
@@ -35,7 +36,7 @@ function BookingSection({ children, business }) {
 
   const BusinessBookedSlot = async () => {
     try {
-      const response = await GlobalApi.BusinessBookedSlot(business.id, date);
+      const response = await GlobalApi.BusinessBookedSlot(business.id, moment(date).format('DD-MMM-yyyy'));
       setBookedSlot(response.bookings);
     } catch (error) {
       console.error('Error fetching booked slots:', error);
@@ -61,7 +62,7 @@ function BookingSection({ children, business }) {
         throw new Error('Missing required fields for booking');
       }
 
-      const response = await GlobalApi.createNewBooking(business.id, date, selectedTime, data.user.email, data.user.name);
+      const response = await GlobalApi.createNewBooking(business.id,moment(date).format('DD-MMM-yyyy'), selectedTime, data.user.email, data.user.name);
       if (response) {
         toast('Service Booked Successfully!');
       } else {

@@ -173,6 +173,33 @@ const BusinessBookedSlot = async (businessId, date) => {
   }
 };
 
+const GetUserBookingHistory = async (userEmail) => {
+  const query = gql`
+    query GetUserBookingHistory {
+      bookings(where: { userEmail: "${userEmail}" }) {
+        businessList {
+          name
+          images {
+            url
+          }
+          contactPerson
+          address
+        }
+        date
+        time
+      }
+    }
+  `;
+
+  try {
+    const result = await request(MASTER_URL, query);
+    return result;
+  } catch (error) {
+    console.error("Error fetching user booking history:", error);
+    throw error;
+  }
+};
+
 export default {
   getCategory,
   getAllBusinessList,
@@ -180,4 +207,5 @@ export default {
   getBusinessById,
   createNewBooking,
   BusinessBookedSlot,
+  GetUserBookingHistory,
 };
