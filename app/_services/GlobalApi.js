@@ -139,9 +139,9 @@ const createNewBooking = async (
       ) {
         id
       }
-          publishManyBookings(to: PUBLISHED) {
-    count
-  }
+      publishManyBookings(to: PUBLISHED) {
+        count
+      }
     }
   `;
 
@@ -154,10 +154,30 @@ const createNewBooking = async (
   }
 };
 
+const BusinessBookedSlot = async (businessId, date) => {
+  const query = gql`
+    query BusinessBookedSlot {
+      bookings(where: { businessList_every: { id: "${businessId}" }, date: "${date}" }) {
+        date
+        time
+      }
+    }
+  `;
+
+  try {
+    const result = await request(MASTER_URL, query);
+    return result;
+  } catch (error) {
+    console.error("Error fetching booked slots:", error);
+    throw error;
+  }
+};
+
 export default {
   getCategory,
   getAllBusinessList,
   getBusinessByCategory,
   getBusinessById,
   createNewBooking,
+  BusinessBookedSlot,
 };

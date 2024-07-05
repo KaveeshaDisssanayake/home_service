@@ -20,13 +20,27 @@ function BookingSection({ children, business }) {
   const [date, setDate] = useState(new Date());
   const [timeSlot, setTimeSlot] = useState([]);
   const [selectedTime, setSelectedTime] = useState();
+  const [bookedSlot, setBookedSlot] = useState([]);
   const { data } = useSession();
 
   useEffect(() => {
     getTime();
-    setDate();
+    setDate(new Date());
     setSelectedTime('');
   }, []);
+
+  useEffect(() => {
+    if (date) BusinessBookedSlot();
+  }, [date]);
+
+  const BusinessBookedSlot = async () => {
+    try {
+      const response = await GlobalApi.BusinessBookedSlot(business.id, date);
+      setBookedSlot(response.bookings);
+    } catch (error) {
+      console.error('Error fetching booked slots:', error);
+    }
+  };
 
   const getTime = () => {
     const timeList = [];
@@ -65,6 +79,10 @@ function BookingSection({ children, business }) {
     }
   };
 
+  const isSlotBooked = (time) => {
+    return bookedSlot.some(item => item.time === time);
+  };
+
   return (
     <div>
       <Sheet>
@@ -87,6 +105,7 @@ function BookingSection({ children, business }) {
               <div className="grid grid-cols-3 gap-3">
                 {timeSlot.map((item, index) => (
                   <Button
+                    disabled={isSlotBooked(item.time)}
                     key={index}
                     variant='outline'
                     className={`border rounded-full p-2 px-3 hover:bg-primary hover:text-white ${selectedTime === item.time && 'bg-primary text-white'}`}
