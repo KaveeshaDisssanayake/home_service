@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+![image](https://github.com/KaveeshaDisssanayake/home_service/assets/90174106/720c8104-695e-434a-849b-89d94b400931)HomeEase: Your One-Stop Solution for Home Services 🏠✨
 
-## Getting Started
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+HomeEase is a cutting-edge web app designed to simplify the process of booking daily home services, including cleaning, washing, repairing, plumbing, and electrical work. Built with the latest technologies, HomeEase ensures a seamless user experience and efficient service management.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Key Features:
 
-## Learn More
+Service Variety 🛠️🧹: Choose from a wide range of services, from routine cleaning to complex repairs.
 
-To learn more about Next.js, take a look at the following resources:
+User-Friendly Interface 🌟: Enjoy an intuitive and easy-to-navigate platform.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Reliable Professionals 👨‍🔧👩‍🔧: Book qualified and trusted professionals for your home needs.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Efficient Booking System 📅: Schedule services at your convenience with just a few clicks.
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Technologies Used:
+
+
+
+Next.js ⚛️: Powers the front-end with a robust and performant React framework.
+
+Express.js 🚀: Handles the back-end operations, ensuring smooth server-side functionality.
+
+Hygraph 📊: Manages content and data efficiently, providing a flexible and scalable solution.
+
+Experience the convenience of HomeEase and make your home service bookings effortless and hassle-free!
+
+![Screenshot (632)](https://github.com/KaveeshaDisssanayake/home_service/assets/90174106/2dff9c25-eb10-4618-a825-b79ef2bb48e1)
+
+
+![Screenshot (634)](https://github.com/KaveeshaDisssanayake/home_service/assets/90174106/153a7c67-238c-4cac-9e22-447229945994)
